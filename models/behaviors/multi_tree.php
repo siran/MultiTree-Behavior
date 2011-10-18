@@ -1150,7 +1150,9 @@ class MultiTreeBehavior extends ModelBehavior {
 			);
 		if ( !empty($root) )
 			$conditions[$Model->escapeField($root)] = $rootId;
-		if ( $Model->updateAll($data, $conditions) === false )
+
+		$callBacks = $this->settings[$Model->alias]['callBacks'];
+		if ( $Model->updateAll($data, $conditions, $callBacks) === false )
 			return false;
 
 		return true;
