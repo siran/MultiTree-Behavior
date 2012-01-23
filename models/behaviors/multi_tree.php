@@ -903,16 +903,24 @@ class MultiTreeBehavior extends ModelBehavior {
 			$conditions = array_merge($conditions, $options['conditions']);
 		}
 
+		$link = array();
+		if (!empty($options['link'])) {
+			$link = $options['link'];
+		}
 		if ( !empty($root) )
 			$conditions[$Model->escapeField($root)] = $node[$root];
 
 		// Get path to node
-		return $Model->find('all', array(
+
+		$res = $Model->find('all', array(
 			'fields' => $fields,
 			'conditions' => $conditions,
 			'order' => array($Model->escapeField($left) => 'asc'),
 			'recursive' => $recursive,
+			'link' => $link
 			));
+
+		return $res;
 	}
 
 	/**
