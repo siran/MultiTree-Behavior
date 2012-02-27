@@ -490,7 +490,9 @@ class MultiTreeBehavior extends ModelBehavior {
 				'fields' => null,
 				'order' => null,
 				'limit' => null,
-				'sort' => 'asc'
+				'sort' => 'asc',
+				'link' => null,
+				'group' => null
 			),
 			$this->settings[$Model->alias],
 			$options
@@ -515,7 +517,8 @@ class MultiTreeBehavior extends ModelBehavior {
 				'order' => $order,
 				'limit' => $limit,
 				'recursive' => $recursive,
-				'link' => $link
+				'link' => $link,
+				'group' => $group
 				));
 		}
 
@@ -544,7 +547,8 @@ class MultiTreeBehavior extends ModelBehavior {
 			'order' => $order,
 			'limit' => $limit,
 			'recursive' => $recursive,
-			'link' => $link
+			'link' => $link,
+			'group' => $group
 			));
 	}
 
