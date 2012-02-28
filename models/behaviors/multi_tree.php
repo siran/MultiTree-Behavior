@@ -527,15 +527,22 @@ class MultiTreeBehavior extends ModelBehavior {
 			return array();
 		}
 		// Conditions
+		if (empty($options['conditions'])) $options['conditions'] = array();
 		if ( $includeNode ) {
-			$conditions = array(
+			$conditions = am(
+				array(
 				$Model->escapeField($left).' >=' => $node[$left],
 				$Model->escapeField($right).' <=' => $node[$right]
+				),
+				$options['conditions']
 				);
 		} else {
-			$conditions = array(
+			$conditions = am(
+				array(
 				$Model->escapeField($left).' >' => $node[$left],
 				$Model->escapeField($right).' <' => $node[$right]
+				),
+				$options['conditions']
 				);
 		}
 		if ( !empty($root) )
