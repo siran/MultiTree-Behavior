@@ -1116,7 +1116,8 @@ class MultiTreeBehavior extends ModelBehavior {
 		$max = $Model->find('all', array(
 			'fields' => $Model->getDataSource()->calculate($Model, 'max', array($Model->escapeField($field), $field)),
 			'conditions' => $conditions,
-			'recursive' => -1
+			'recursive' => -1,
+			'order' => ''
 		));
 		return (int)(reset(reset(reset($max))));
 	}
